@@ -1,0 +1,2 @@
+class TeacherAccount < ApplicationRecord
+end
