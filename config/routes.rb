@@ -11,10 +11,12 @@ Rails.application.routes.draw do
   post 'login' => 'home#login'
   get 'appli/new' => 'appli#new'
   get 'appli/index' => 'appli#index'
+  post 'appli/check' => 'appli#check'
   get 'appli/:id/edit' => 'appli#edit'
   get 'report/new' => 'report#new'
   get 'report/:id/edit' => 'report#edit'
   get 'report/search' => 'report#search'
   get 'report/:id/show' => 'report#show'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
