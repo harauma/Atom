@@ -1,2 +1,61 @@
-<h1>Appli#new</h1>
-<p>Find me in app/views/appli/new.html.erb</p>
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
+	<title>MK</title>
+	<link rel="stylesheet" type="text/css" media="all" href="style.css"
+	<script src="js/jquery1.4.4.min.js"></script>
+	<script src="js/script.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+</head>
+
+<body>
+
+	<header id="header" role="banner">
+		<div class="inner">
+			<div class="logo">
+				<h2>MK</h2>
+			</div>
+			<nav id="mainNav">
+				<div class="inner">
+					<a class="menu" id="menu"><span>MENU</span></a>
+					<div class="panel">
+						<ul id="topnav">
+							<li class="current-menu-item"><a href="index.html"><strong>トップページ</strong><br /></a></li>
+							<li><a href="sample.html"><strong>パスワード変更</strong><br /></a></li>
+							<li><a href="sample.html"><strong>logout</strong><br /></a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</header>
+</body>
+</html>
+<ol>
+<h3>申請書作成</h3>
+<%= form_with url:'index' do |form| %>
+  <label for="name">会社名<span class="mgr-10"></label></span><%= form.text_field :name %><br>
+  <label for="name">場所&nbsp;&nbsp;&nbsp;&nbsp;<span class="mgr-10"></label></span><%= form.text_field :name %>
+  <label for="prefecture">内容</label>
+      <select name="prefecture" id="prefecture">
+        <option value="">以下から選択してください</option>
+        <option value="単独">単独</option>
+        <option value="合同">合同</option>
+        <option value="試験">試験</option>
+      </select><br><br>
+  <label for="name">開始時刻<span class="mgr-10"></label></span><%= form.date_field :date %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+  <label for="name">終了日時<span class="mgr-10"></label></span><%= form.date_field :date %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+  <label for="name">休退日時<span class="mgr-10"></label></span><%= form.date_field :date %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+  
+  <fieldset>
+    <label for="name">遅刻<span class="mgr-10"></label></span><%= form.check_box :date %><br>
+    <label for="name">早退<span class="mgr-10"></label></span><%= form.check_box :date %><br>
+    <label for="name">欠席<span class="mgr-10"></label></span><%= form.check_box :date %><br>
+  </fieldset>
+
+<% end %>
+</form>
+</ol>
