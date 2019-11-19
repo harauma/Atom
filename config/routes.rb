@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 't_user/:id' => 't_user#top'
+  get 't_user/:id/top' => 't_user#top'
   get 't_user/new' => 't_user#new'
-  get 's_user/:id' => 's_user#top'
-  get 's_user/new' => 's_uaer#new'
+  get 's_user/:id/top' => 's_user#top'
+  get 's_user/new' => 's_user#new'
   get 's_user/change' => 's_change#chage_form'
   post 's_user/change' => 's_change#change'
   get '/' => 'home#top'
