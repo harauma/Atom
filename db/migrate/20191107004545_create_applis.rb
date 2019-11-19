@@ -6,6 +6,8 @@ class CreateApplis < ActiveRecord::Migration[5.2]
       t.string     :place,        :limit => 255
       t.string     :content,      :limit => 255
       t.string     :conpany_name, :limit => 255
+      t.integer    :withdrawal,   :limit => 1
+      t.datetime   :withdrawal_day
       t.integer    :admit_flg
       t.integer    :watch_flg
       t.text       :comment,      :limit => 1023
