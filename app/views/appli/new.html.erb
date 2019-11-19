@@ -34,27 +34,34 @@
 	</header>
 </body>
 </html>
-<ol>
-<h3>申請書作成</h3>
-<%= form_with url:'index' do |form| %>
-  <label for="name">会社名<span class="mgr-10"></label></span><%= form.text_field :name %><br>
-  <label for="name">場所&nbsp;&nbsp;&nbsp;&nbsp;<span class="mgr-10"></label></span><%= form.text_field :name %>
-  <label for="prefecture">内容</label>
+ <ol>
+<h2>申請書作成</h2><br>
+<h5>
+<%= form_with url:'check', local: true do |form| %>
+  <label>会社名<span class="mgr-10"></label></span><%= form.text_field :name %><br>
+  <label>場所&nbsp;&nbsp;&nbsp;&nbsp;<span class="mgr-10"></label></span><%= form.text_field :place %>
+
+  <label>内容</label>
       <select name="prefecture" id="prefecture">
-        <option value="">以下から選択してください</option>
+   <option value="">以下から選択してください</option>
         <option value="単独">単独</option>
         <option value="合同">合同</option>
         <option value="試験">試験</option>
       </select><br><br>
-  <label for="name">開始時刻<span class="mgr-10"></label></span><%= form.date_field :date %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  <label for="name">終了日時<span class="mgr-10"></label></span><%= form.date_field :date %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  <label for="name">休退日時<span class="mgr-10"></label></span><%= form.date_field :date %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  
-  <fieldset>
-    <label for="name">遅刻<span class="mgr-10"></label></span><%= form.check_box :date %><br>
-    <label for="name">早退<span class="mgr-10"></label></span><%= form.check_box :date %><br>
-    <label for="name">欠席<span class="mgr-10"></label></span><%= form.check_box :date %><br>
-  </fieldset>
+
+     	<label for="s_time">開始時刻<span class="mgr-10"></label></span><%= form.date_field :s_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+  		<label for="e_time">終了日時<span class="mgr-10"></label></span><%= form.date_field :e_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+  		<label for="d_time">休退日時<span class="mgr-10"></label></span><%= form.date_field :d_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+            
+			<%= form.radio_button :withdrawal_id, :早退, required: true %>
+            <%= form.label :早退 %>
+			<%= form.radio_button :withdrawal_id, :遅刻, required: true %>
+            <%= form.label :遅刻 %>
+            <%= form.radio_button :withdrawal_id, :欠席, required: true %>
+        	<%= form.label :欠席 %><br>
+			</h5>
+
+			<h3><%= form.submit '確認'%></h3>
 
 <% end %>
 </form>
