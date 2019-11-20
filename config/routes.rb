@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'appli/new' => 'appli#new'
   get 'appli/index' => 'appli#index'
   post 'appli/check' => 'appli#check'
+  post 'appli/submit' => 'appli#submit'
   get 'appli/:id/edit' => 'appli#edit'
   get 'report/new' => 'report#new'
   get 'report/:id/edit' => 'report#edit'
