@@ -4,21 +4,28 @@
         <%= form.datetime_field :appli_day %>
     </div>
     <div class="form-group">
-    <p>報告日</p>
-    <%= form.datetime_field :report_day %>
+        <p>報告日</p>
+        <%= form.datetime_field :report_day %>
     </div>
     <div class="form-group">
-    <p>企業コード</p>
-    <%= form.text_field :job_code %>
+        <p>試験日時</p>
+        <%= form.datetime_field :exam_day %>
     </div>
     <div class="form-group">
-    <p>試験日時</p>
-    <%= form.datetime_field :job_code %>
+        <p>試験日時</p>
+        <%= form.text_field :job_code %>
     </div>
-    <p>受験場所</p>
-    <%= form.text_field :job_code %>
-    <p>受験エリア</p>
-    <%= form.datetime_field :job_code %>
+        <p>受験場所</p>
+        <%= form.text_field :job_code %>
+        <p>受験エリア</p>
+    <div class="ui radio checkbox">
+        <%= form.radio_button :exam_area, :札幌, required: true %>
+        <%= form.label :札幌 %>
+        <%= form.radio_button :exam_area, :東京, required: true %>
+        <%= form.label :東京 %>
+        <%= form.radio_button :exam_area, :その他, required: true %>
+        <%= form.label :その他 %>
+    </div>
     
     <%= form.submit '登録',class:'btn-success.rounded-pills' %>
 <% end%>

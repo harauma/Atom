@@ -1,5 +1,6 @@
 class AppliController < ApplicationController
   def new
+    @current_date = Time.current
   end
 
   def check
@@ -17,6 +18,7 @@ class AppliController < ApplicationController
   end
 
   def submit
+    @appli = Appli.new(appli_params)
     if @appli.save
       redirect_to('/')
     else
