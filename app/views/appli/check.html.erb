@@ -37,20 +37,19 @@
  <ol>
 <h2>申請書作成</h2><br>
 <h5>
-<%= form_with url:'check', local: true do |form| %>
+<%= form_with model:@appli, url:'submit', local: true do |form| %>
   <label for="name">会社名<span class="mgr-10"></label>&nbsp;&nbsp;<%= @name %><br>
   <label for="place">場所&nbsp;&nbsp;&nbsp;&nbsp;<span class="mgr-10"></label></span><%= @place %>&nbsp;&nbsp;&nbsp;&nbsp;
 
   <label>内容&nbsp;&nbsp;&nbsp;&nbsp;</label><%= @prefecture %><br><br>
 
-     	<label for="name">開始時刻<span class="mgr-10"></label></span><%= @s_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  		<label for="name">終了日時<span class="mgr-10"></label></span><%= @e_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  		<label for="name">休退日時<span class="mgr-10"></label></span><%= @d_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
+    	<label>開始日時<span class="mgr-10"></label></span><%= @s_date %><span class="mgr-10"></span><span class="mgr-10"></span><%= @s_time %><br>
+  		<label>終了日時<span class="mgr-10"></label></span><%= @e_date %><span class="mgr-10"></span><span class="mgr-10"></span><%= @e_time %><br>
+  		<label>休退日時<span class="mgr-10"></label></span><%= @d_date %><span class="mgr-10"></span><span class="mgr-10"></span><%= @d_time %><br>
 
 			</h5>
 
-			<h3><%= form.submit '確認'%></h3>
+			<h3><%= form.submit '申請'%></h3>
 
 <% end %>
-</form>
 </ol>

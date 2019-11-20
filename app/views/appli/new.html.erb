@@ -37,32 +37,32 @@
  <ol>
 <h2>申請書作成</h2><br>
 <h5>
-<%= form_with url:'check', local: true do |form| %>
-  <label>会社名<span class="mgr-10"></label></span><%= form.text_field :name %><br>
+<%= form_with model:Appli.new ,url:'check', local: true do |form| %>
+  <%= form.hidden_field :admit_flg, value: 0 %>
+  <%= form.hidden_field :watch_flg, value: 0 %>
+  <label>会社名<span class="mgr-10"></label></span><%= form.text_field :company_name %><br>
   <label>場所&nbsp;&nbsp;&nbsp;&nbsp;<span class="mgr-10"></label></span><%= form.text_field :place %>
 
   <label>内容</label>
-      <select name="prefecture" id="prefecture">
+      <select name="prefecture" id="content">
    <option value="">以下から選択してください</option>
         <option value="単独">単独</option>
         <option value="合同">合同</option>
         <option value="試験">試験</option>
       </select><br><br>
 
-     	<label for="s_time">開始時刻<span class="mgr-10"></label></span><%= form.date_field :s_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  		<label for="e_time">終了日時<span class="mgr-10"></label></span><%= form.date_field :e_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-  		<label for="d_time">休退日時<span class="mgr-10"></label></span><%= form.date_field :d_time %><span class="mgr-10"></span><label for="name">時刻<span class="mgr-10"></label></span><%= form.time_field :date %><br>
-            
-			<%= form.radio_button :withdrawal_id, :早退, required: true %>
+     	<label for="s_date">開始日時<span class="mgr-10"></label></span><%= form.datetime_field :start %><br>
+  		<label for="e_date">終了日時<span class="mgr-10"></label></span><%= form.datetime_field :end %><br>
+  		<label for="d_date">休退日時<span class="mgr-10"></label></span><%= form.datetime_field :withdrawal_day %><br>
+
+			<%= form.radio_button :withdrawal, :早退, required: true %>
             <%= form.label :早退 %>
-			<%= form.radio_button :withdrawal_id, :遅刻, required: true %>
+			<%= form.radio_button :withdrawal, :遅刻, required: true %>
             <%= form.label :遅刻 %>
-            <%= form.radio_button :withdrawal_id, :欠席, required: true %>
+            <%= form.radio_button :withdrawal, :欠席, required: true %>
         	<%= form.label :欠席 %><br>
 			</h5>
 
 			<h3><%= form.submit '確認'%></h3>
-
-<% end %>
-</form>
+<%end%>
 </ol>
