@@ -1,5 +1,24 @@
-<% if @appli %>
-    <%= @appli.each do |appli| %>
-
+<h1>申請書一覧</h1>
+<% if @appli.count > 0 %>
+    <% @appli.each do |appli| %>
+        <h3 class="ui top attached header"><%= appli.company_name %></h3>
+        <div class="ui attached segment">
+            <p>学籍番号：<%= appli.student_id %></p>
+            <p>名前：<%= @current_user.student_name %></p>
+            <p>開始日時：<%= appli.start.strftime('%Y年%m月%d日%H時%M分') %></p>
+            <p>終了日時：<%= appli.end.strftime('%Y年%m月%d日%H時%M分') %></p>
+            <p>場所：<%= appli.place %></p>
+            <p>内容：<%= appli.content %></p>
+            <p>休退分類：<%= appli.withdrawal %></p>
+            <% if appli.withdrawal == "欠席"%>
+                <p>欠席日：<%= appli.withdrawal_day.strftime('%Y年%m月%d日') %></p>
+            <% elsif appli.withdrawal == "早退"%>
+                <p>早退日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+            <% else %>
+                <p>遅刻日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+            <% end %>
+        </div>
     <% end %>
+<% else %>
+    <h2 class="ui header">まだ申請書ないで！！</h2>
 <% end %>

@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+ .ui.menu {
+     background-image: url(https://subtlepatterns.com/patterns/sativa.png)
+ }

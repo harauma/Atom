@@ -13,25 +13,25 @@
   </head>
 
   <body>
-  <header id="header" role="banner">
-		<div class="inner">
-			<div class="logo">
-				<h2>MK</h2>
-			</div>
-			<nav id="mainNav">
-				<div class="inner">
-					<a class="menu" id="menu"><span>MENU</span></a>
-					<div class="panel">
-						<ul id="topnav">
-							<li class="current-menu-item"><a href="/"><strong>トップページ</strong><br /></a></li>
-							<li><a href="sample.html"><strong>パスワード変更</strong><br /></a></li>
-							<li><a href="sample.html"><strong>logout</strong><br /></a></li>
-						</ul>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</header>
+  <div class="ui borderless main menu">
+    <div class="ui text container">
+      <div class="header item">
+        <a rel="nofollow" class="item" href="/"><img class="logo" src="/mk.png"></a>
+      </div>
+      <% if @current_user %>
+        <a rel="nofollow" class="item" href="/logout">ログアウト</a>
+        <a rel="nofollow" href="/appli/index" class="item">就職活動申請書一覧</a>
+        <a rel="nofollow" href="/appli/new" class="item">就職活動申請書作成</a>
+        <a rel="nofollow" href="/report/search" class="item">受験報告書検索</a>
+        <a rel="nofollow" href="/report/index" class="item">受験報告書一覧</a>
+        <a rel="nofollow" href="/report/new" class="item">受験報告書作成</a>
+      <% else %>
+        <a rel="nofollow" class="item" href="/login">ログイン</a>
+        <a rel="nofollow" class="item" href="/">TOP</a>
+        <a rel="nofollow" href="/report/search" class="item">受験報告書検索</a>
+      <% end %>
+    </div>
+  </div>
     <div class="ui main container">
       <%= yield %>
     </div>
