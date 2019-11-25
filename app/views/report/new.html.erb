@@ -1,24 +1,29 @@
+<div class="ui text container">
 <%= form_with model: Report.new, url: 'new', local: true, class: 'ui form' do |form|%>
-    <div class="form-group">
-        <p>申請日</p>
-        <%= form.datetime_field :appli_day %>
+    <%= form.hidden_field :student_id, value: @current_user.id %>
+    <%= form.hidden_field :course_id, value: @current_user.course_id %>
+    <div class="field">
+        <%= form.label :申請日 %>
+        <%= form.datetime_field :appli_day, value: @current_date.strftime('%Y-%m-%dT%H:%M') %>
     </div>
-    <div class="form-group">
-        <p>報告日</p>
-        <%= form.datetime_field :report_day %>
+    <div class="field">
+        <%= form.label :報告日 %>
+        <%= form.datetime_field :report_day, value: @current_date.strftime('%Y-%m-%dT%H:%M') %>
     </div>
-    <div class="form-group">
-        <p>試験日時</p>
-        <%= form.datetime_field :exam_day %>
+    <div class="field">
+        <%= form.label :試験日時 %>
+        <%= form.datetime_field :exam_day, value: @current_date.strftime('%Y-%m-%dT%H:%M') %>
     </div>
-    <div class="form-group">
-        <p>試験日時</p>
+    <div class="field">
+        <%= form.label :求人番号 %>
         <%= form.text_field :job_code %>
     </div>
-        <p>受験場所</p>
-        <%= form.text_field :job_code %>
-        <p>受験エリア</p>
-    <div class="ui radio checkbox">
+    <div class="field">
+        <%= form.label :受験場所 %>
+        <%= form.text_field :place %>
+    </div>
+    <%= form.label :受験エリア %>
+    <div class="ui radio">
         <%= form.radio_button :exam_area, :札幌, required: true %>
         <%= form.label :札幌 %>
         <%= form.radio_button :exam_area, :東京, required: true %>
@@ -27,5 +32,6 @@
         <%= form.label :その他 %>
     </div>
     
-    <%= form.submit '登録',class:'btn-success.rounded-pills' %>
+    <%= form.submit '登録',class:'ui green button' %>
 <% end%>
+</div>

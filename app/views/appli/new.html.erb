@@ -1,29 +1,36 @@
+<div class="ui text container">
 <h2>申請書作成</h2><br>
-<h5>
-<%= form_with model:Appli.new ,url:'submit', local: true do |form| %>
+<%= form_with model:Appli.new ,url:'submit', local: true, class: 'ui form' do |form| %>
   <%= form.hidden_field :admit_flg, value: 0 %>
   <%= form.hidden_field :watch_flg, value: 0 %>
-  <label>会社名<span class="mgr-10"></label></span><%= form.text_field :company_name %><br>
-  <label>場所&nbsp;&nbsp;&nbsp;&nbsp;<span class="mgr-10"></label></span><%= form.text_field :place %>
-
-  <label>内容</label>
-      <select name="prefecture" id="content">
-   <option value="">以下から選択してください</option>
-        <option value="単独">単独</option>
-        <option value="合同">合同</option>
-        <option value="試験">試験</option>
-      </select><br><br>
-
-     	<label for="s_date">開始日時<span class="mgr-10"></label></span><%= form.datetime_field :start, value: @current_date.strftime('%Y-%m-%dT%H:%M') %><br>
-  		<label for="e_date">終了日時<span class="mgr-10"></label></span><%= form.datetime_field :end, value: @current_date.strftime('%Y-%m-%dT%H:%M') %><br>
-  		<label for="d_date">休退日時<span class="mgr-10"></label></span><%= form.datetime_field :withdrawal_day, value:@current_date.strftime('%Y-%m-%dT%H:%M') %><br>
-
-			<%= form.radio_button :withdrawal, :早退, required: true %>
-            <%= form.label :早退 %>
-			<%= form.radio_button :withdrawal, :遅刻, required: true %>
-            <%= form.label :遅刻 %>
-            <%= form.radio_button :withdrawal, :欠席, required: true %>
-        	<%= form.label :欠席 %><br>
-			</h5>
-			<h3><%= form.submit '確認'%></h3>
+  <%= form.hidden_field :student_id, value: @current_user.id %>
+	<div class="field">
+  	<%= form.label :会社名 %>
+		<%= form.text_field :company_name, class: 'ui input' %>
+	</div>
+	<div class="field">
+  	<%= form.label :場所 %>
+		<%= form.text_field :place %>
+	<div class="field">
+		<%= form.label :内容 %>
+		<%= form.select :content, {以下から入力してください: '',単独: '単独', 合同: '合同', 試験: '試験'} %>
+	</div>
+	<div class="field">
+    <%= form.label :開始日時 %>
+		<%= form.datetime_field :start, value: @current_date.strftime('%Y-%m-%dT%H:%M') %>
+  	<%= form.label :終了日時 %>
+		<%= form.datetime_field :end, value: @current_date.strftime('%Y-%m-%dT%H:%M') %>
+  	<%= form.label :休退日時 %>
+		<%= form.datetime_field :withdrawal_day, value:@current_date.strftime('%Y-%m-%dT%H:%M') %><br>
+	</div>
+	<div class="ui radio">
+		<%= form.radio_button :withdrawal, :早退, required: true %>
+    <%= form.label :早退 %>
+		<%= form.radio_button :withdrawal, :遅刻, required: true %>
+    <%= form.label :遅刻 %>
+    <%= form.radio_button :withdrawal, :欠席, required: true %>
+    <%= form.label :欠席 %><br>
+	</div>
+	<%= form.submit '登録', class: 'ui green button' %>
 <% end %>
+</div>

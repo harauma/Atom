@@ -940,8 +940,12 @@ img.alignleft {
   }
 }
 
-.btn {
+.btn.btn-warning {
   height: 300px;
+  weight: 200px;
+}
+.btn.btn-1 {
+  height: 500px;
   weight: 200px;
 }
 .btn h2 {
@@ -1091,4 +1095,7 @@ ol {
 }
 .mgr-10 {
   margin-right: 20px;
+}
+.field {
+  margin: 0 auto;
 }

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2019_11_07_005607) do
     t.string "place"
     t.string "content"
     t.string "company_name"
-    t.integer "withdrawal", limit: 1
+    t.string "withdrawal"
     t.datetime "withdrawal_day"
     t.integer "admit_flg"
     t.integer "watch_flg"
