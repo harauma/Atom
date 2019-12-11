@@ -37,10 +37,11 @@
     <p></p>
     <%= form.password_field :pass, placeholder: 'パスワード' %>
     <p></p>
-    <%= form.submit :ログイン, class: 'ui green button'%>
+    <%= form.submit :ログイン, class: 'fluid ui green button'%>
   </div>
 </div>
 <% end %>
 </div><br>
-<h2><%= link_to '新規登録はこちらから', 's_user/new'%></h2>
+<h2><%= link_to '生徒用新規登録はこちらから', 's_user/new'%></h2>
+<h2><%= link_to '教師用新規登録はこちらから', 't_user/new'%></h2>
 </div>

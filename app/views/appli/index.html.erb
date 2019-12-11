@@ -1,3 +1,4 @@
+<% session[:re_flg] = nil %>
 <h1>申請書一覧</h1>
 <% if @appli.count > 0 %>
     <% @appli.each do |appli| %>
@@ -17,6 +18,11 @@
             <% else %>
                 <p>遅刻日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
             <% end %>
+        </div>
+        <div class="ui attached segment">
+            <%= button_to '提出', "/appli/#{appli.id}/show", {method: :get, class: 'ui big blue basic button'} %><br>
+            <%= button_to '削除', 'delete', class: 'ui big red basic button', params: {id: appli.id} %><br>
+            <%= button_to '編集', "/appli/#{appli.id}/edit", {method: :get, class: 'fluid ui big yellow  basic button'} %>
         </div>
     <% end %>
 <% else %>

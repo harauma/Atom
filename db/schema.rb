@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_07_005607) do
+ActiveRecord::Schema.define(version: 2019_11_25_043656) do
+
+  create_table "appli_submits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "admit_flg"
+    t.integer "watch_flg"
+    t.integer "delete_flg"
+    t.text "reply"
+    t.bigint "teacher_id"
+    t.bigint "appli_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["appli_id"], name: "index_appli_submits_on_appli_id"
+    t.index ["teacher_id"], name: "index_appli_submits_on_teacher_id"
+  end
 
   create_table "applis", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "start"
@@ -20,10 +33,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_005607) do
     t.string "company_name"
     t.string "withdrawal"
     t.datetime "withdrawal_day"
-    t.integer "admit_flg"
-    t.integer "watch_flg"
     t.text "comment"
-    t.text "reply"
+    t.integer "delete_flg"
     t.bigint "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -42,6 +53,19 @@ ActiveRecord::Schema.define(version: 2019_11_07_005607) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "report_submits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "admit_flg"
+    t.integer "watch_flg"
+    t.integer "delete_flg"
+    t.text "reply"
+    t.bigint "teacher_id"
+    t.bigint "report_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_submits_on_report_id"
+    t.index ["teacher_id"], name: "index_report_submits_on_teacher_id"
+  end
+
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.datetime "appli_day"
     t.datetime "report_day"
@@ -54,10 +78,8 @@ ActiveRecord::Schema.define(version: 2019_11_07_005607) do
     t.string "aptitude_content", limit: 7
     t.string "interview", limit: 12
     t.string "question", limit: 8
-    t.integer "approval_flg"
-    t.integer "watch_flg"
     t.text "comment"
-    t.text "reply"
+    t.integer "delete_flg"
     t.bigint "student_id"
     t.string "course_id"
     t.datetime "created_at", null: false
@@ -91,12 +113,15 @@ ActiveRecord::Schema.define(version: 2019_11_07_005607) do
 
   create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
-    t.string "password"
     t.string "course_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "appli_submits", "applis"
+  add_foreign_key "appli_submits", "teachers"
+  add_foreign_key "report_submits", "reports"
+  add_foreign_key "report_submits", "teachers"
   add_foreign_key "student_accounts", "students"
   add_foreign_key "teacher_accounts", "teachers"
 end

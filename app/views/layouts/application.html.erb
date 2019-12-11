@@ -13,24 +13,31 @@
   </head>
 
   <body>
+  <div class="fluid ui main container">
   <div class="ui borderless main menu">
-    <div class="ui text container">
-      <div class="header item">
-        <a rel="nofollow" class="item" href="/"><img class="logo" src="/mk.png"></a>
-      </div>
-      <% if @current_user %>
-        <a rel="nofollow" class="item" href="/logout">ログアウト</a>
-        <a rel="nofollow" href="/appli/index" class="item">就職活動申請書一覧</a>
-        <a rel="nofollow" href="/appli/new" class="item">就職活動申請書作成</a>
-        <a rel="nofollow" href="/report/search" class="item">受験報告書検索</a>
-        <a rel="nofollow" href="/report/index" class="item">受験報告書一覧</a>
-        <a rel="nofollow" href="/report/new" class="item">受験報告書作成</a>
-      <% else %>
-        <a rel="nofollow" class="item" href="/login">ログイン</a>
-        <a rel="nofollow" class="item" href="/">TOP</a>
-        <a rel="nofollow" href="/report/search" class="item">受験報告書検索</a>
-      <% end %>
+    <div class="header item">
+      <a rel="nofollow" class="item" href="/"><img class="logo" src="/mk.png"></a>
     </div>
+    <% if @current_user && @flg == "s" %>
+      <a rel="nofollow" href="/logout" class="item">ログアウト</a>
+      <a rel="nofollow" href="/appli/index" class="item">就職活動申請書一覧</a>
+      <a rel="nofollow" href="/appli/new" class="item">就職活動申請書作成</a>
+      <%# <a rel="nofollow" href="/report/search" class="item">受験報告書検索</a> %>
+      <%# <a rel="nofollow" href="/report/index" class="item">受験報告書一覧</a> %>
+      <%# <a rel="nofollow" href="/report/new" class="item">受験報告書作成</a> %>
+      <a rel="nofollow" href="/s_user/applis" class="item">就職活動申請書仮提出一覧</a>
+      <a rel="nofollow" href="/s_user/honban" class="item">就職活動申請書本提出一覧</a>
+    <% elsif @current_user && @flg == "t" %>
+      <a rel="nofollow" href="/logout" class="item">ログアウト</a>
+      <a rel="nofollow" href="/post/index" class="item">就職活動申請書一覧</a>
+      <a rel="nofollow" href="/post/index" class="item">受験報告書一覧</a>
+      <a rel="nofollow" href="/t_user/appli" class="item">承認済み一覧</a>
+    <% else %>
+      <a rel="nofollow" class="item" href="/login">ログイン</a>
+      <a rel="nofollow" class="item" href="/">TOP</a>
+      <a rel="nofollow" href="/report/search" class="item">受験報告書検索</a>
+    <% end %>
+  </div>
   </div>
     <div class="ui main container">
       <%= yield %>

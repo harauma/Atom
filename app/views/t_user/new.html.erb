@@ -1,0 +1,28 @@
+<div class="ui text container">
+  <%= form_with url: 'new', class: 'ui form' do |form| %>
+    <div class="field">
+        <%= form.label :教師番号 %>
+        <%= form.text_field :id %>
+    </div>
+    <div class="field">
+        <%= form.label :名前 %>
+        <%= form.text_field :name %>
+    </div>
+    <div class="field">
+      <%= form.label :クラス %>
+		<%= form.select :class_code, {R:"R",S:"S",G:"G",M:"M",B:"B"} %>
+    </div>
+    <div class="field">
+        <%= form.label :パスワード %>
+        <%= form.password_field :pass %>
+    </div>
+    <div class="field">
+        <%= form.label :パスワード再入力 %>
+        <%= form.password_field :pass_conf %>
+    </div>
+    <div class="field">
+        <label> </label>
+        <%= form.submit :新規作成, class: 'fluid ui green button' %>
+    </div>
+  <% end %>
+</div>
