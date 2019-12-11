@@ -1,42 +1,61 @@
 	<div id="wrapper">
     <div class="logo">
 		<h2>
-		<% if @current_user %>
+		<% if @current_user && session[:login_id] && session[:login_id][0] == "s"%>
 			<%= @current_user.student_name %>のマイページ
+		<% elsif @current_user && session[:login_id] && session[:login_id][0] == "t"%>
+			<%= @current_user.name %>のマイページ
 		<% else %>
 			TOPページ
 		<% end %>
 		</h2>
 	</div>
-	<% if @current_user %>
+	<% if @current_user && @flg == "s" %>
 		<section class="gridWrapper">
-			<article class="grid">
+			<article class="grids">
 				<div class="box">
-					<h3>就職活動申請書一覧</h3>
+					<h3>就職活動申請書</h3>
                     <a href="appli/index" class="btn btn-warning btn-lg btn-block"><h2>一覧を表示</h2></a>
 					<a href="appli/new" class="btn btn-warning btn-lg btn-block"><h2>新規作成</h2></a>
 				</div>
 			</article>
-			<article class="grid">
+			<article class="grids">
 				<div class="box">
 					<h3>受験報告書検索</h3>
                     <a href="#" class="btn btn-warning btn-lg btn-block"><h2>受験報告書を検索</h2></a>
 				</div>
 			</article>
-			<article class="grid">
+			<article class="grids">
 				<div class="box">
-					<h3>受験報告一覧表</h3>
+					<h3>受験報告書</h3>
                     <a href="/report/index" class="btn btn-warning btn-lg btn-block"><h2>一覧を表示</h2></a>
 					<a href="/report/new" class="btn btn-warning btn-lg btn-block"><h2>新規作成</h2></a>
 				</div>
 			</article>
 		</section>
+	<% elsif @current_user && @flg == "t" %>
+		<section class="gridWrapper">
+			<article class="grids">
+				<div class="box">
+					<h3>就職活動申請書</h3>
+                    <a href="post/index" class="btn btn-warning btn-lg btn-block"><h2>一覧を表示</h2></a>
+				</div>
+			</article>
+			<article class="grids">
+				<div class="box">
+					<h3>受験報告書</h3>
+                    <a href="/report/index" class="btn btn-warning btn-lg btn-block"><h2>一覧を表示</h2></a>
+				</div>
+			</article>
+		</section>
 	<% else %>
-		<article class="grid">
+		<section class="gridWrapper">
+			<article class="grids">
 				<div class="box">
 					<h3>受験報告書検索</h3>
                     <a href="#" class="btn btn-warning btn-lg btn-block"><h3>受験報告書を検索</h3></a>
 				</div>
-		</article>
+			</article>
+		</section>
 	<% end %>
 	</div>

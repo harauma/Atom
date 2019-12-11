@@ -1,0 +1,32 @@
+<h1>提出画面</h1>
+<h3 class="ui top attached header"><%= @appli.company_name %></h3>
+    <div class="ui attached segment">
+        <p>学籍番号：<%= @appli.student_id %></p>
+        <p>名前：<%= @student.student_name %></p>
+        <p>開始日時：<%= @appli.start.strftime('%Y年%m月%d日%H時%M分') %></p>
+        <p>終了日時：<%= @appli.end.strftime('%Y年%m月%d日%H時%M分') %></p>
+        <p>場所：<%= @appli.place %></p>
+        <p>内容：<%= @appli.content %></p>
+        <p>休退分類：<%= @appli.withdrawal %></p>
+        <% if @appli.withdrawal == "欠席"%>
+            <p>欠席日：<%= @appli.withdrawal_day.strftime('%Y年%m月%d日') %></p>
+        <% elsif @appli.withdrawal == "早退"%>
+            <p>早退日時：<%= @appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+        <% else %>
+            <p>遅刻日時：<%= @appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+        <% end %>
+    </div>
+<h2>教師選択</h2>
+<%= form_with model: AppliSubmit.new, url: 'post', local: true, class: 'ui form' do |form| %>
+    <%= form.hidden_field :appli_id, value: @appli.id %>
+    <%= form.hidden_field :admit_flg, value: 0 %>
+    <%= form.hidden_field :watch_flg, value: 0 %>
+    <%= form.hidden_field :delete_flg, value: 0 %>
+    <% @teachers.each do |teacher| %>
+        <div class="ui radio">
+	        <%= form.radio_button :teacher_id, teacher.id, required: true %>
+            <%= form.label teacher.name %>
+        </div><br>
+    <% end %>
+    <%= form.submit :申請, class: 'fluid ui green button' %>
+<% end %>

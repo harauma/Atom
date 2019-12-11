@@ -1,0 +1,36 @@
+<h1>申請書編集</h1>
+<%= form_with model: @appli, url:'update', local: true, class: 'ui form' do |form|  %>
+<div class="ui attached segment">
+    <%= form.hidden_field :id, value: @appli.id %>
+    <%= form.hidden_field :student_id, value: @appli.student_id %>
+    <%= form.hidden_field :delete_flg, value: @appli.delete_flg %>
+	<div class="field">
+  	    <%= form.label :会社名 %>
+		<%= form.text_field :company_name, class: 'ui input' %>
+	</div>
+	<div class="field">
+  	    <%= form.label :場所 %>
+		<%= form.text_field :place %>
+	<div class="field">
+		<%= form.label :内容 %>
+		<%= form.select :content, {以下から入力してください: '',単独: '単独', 合同: '合同', 試験: '試験'} %>
+	</div>
+	<div class="field">
+        <%= form.label :開始日時 %>
+		<%= form.datetime_field :start, value: @appli.start.strftime('%Y-%m-%dT%H:%M') %>
+  	    <%= form.label :終了日時 %>
+		<%= form.datetime_field :end, value: @appli.end.strftime('%Y-%m-%dT%H:%M') %>
+  	    <%= form.label :休退日時 %>
+		<%= form.datetime_field :withdrawal_day, value:@appli.withdrawal_day.strftime('%Y-%m-%dT%H:%M') %><br>
+	</div>
+	<div class="ui radio">
+		<%= form.radio_button :withdrawal, :早退, required: true %>
+        <%= form.label :早退 %>
+		<%= form.radio_button :withdrawal, :遅刻, required: true %>
+        <%= form.label :遅刻 %>
+        <%= form.radio_button :withdrawal, :欠席, required: true %>
+        <%= form.label :欠席 %><br>
+	</div>
+	<%= form.submit '登録', class: 'ui green button' %>
+</div>
+<% end %>

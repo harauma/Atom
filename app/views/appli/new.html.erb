@@ -1,9 +1,8 @@
 <div class="ui text container">
 <h2>申請書作成</h2><br>
 <%= form_with model:Appli.new ,url:'submit', local: true, class: 'ui form' do |form| %>
-  <%= form.hidden_field :admit_flg, value: 0 %>
-  <%= form.hidden_field :watch_flg, value: 0 %>
   <%= form.hidden_field :student_id, value: @current_user.id %>
+  <%= form.hidden_field :delete_flg, value: 0 %>
 	<div class="field">
   	<%= form.label :会社名 %>
 		<%= form.text_field :company_name, class: 'ui input' %>
@@ -31,6 +30,6 @@
     <%= form.radio_button :withdrawal, :欠席, required: true %>
     <%= form.label :欠席 %><br>
 	</div>
-	<%= form.submit '登録', class: 'ui green button' %>
+	<%= form.submit '登録', class: 'fluid ui green button' %>
 <% end %>
 </div>

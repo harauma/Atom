@@ -252,7 +252,7 @@ a:focus {
   overflow: hidden;
 }
 
-.grid h3 {
+.grids h3 {
   padding: 13px 0;
   margin-bottom: 5px;
   font-weight: bold;
@@ -260,11 +260,11 @@ a:focus {
   border-bottom: 1px solid #ccc;
 }
 
-.grid p {
+.grids p {
   padding: 5px 0;
 }
 
-.grid p.img {
+.grids p.img {
   float: left;
   margin: 3px 0 0 0;
 }
@@ -592,7 +592,7 @@ img.alignleft {
   }
 
   /* グリッド共通 ベース:トップページ4カラム */
-  .grid {
+  .grids {
     width: 220px;
     display: table-cell;
   }
@@ -838,7 +838,7 @@ img.alignleft {
     background: #eee url(images/subLast.png) no-repeat 20px -65px;
   }
 
-  .grid {
+  .grids {
     float: left;
     width: 48%;
     margin: 10px 2% 0 0;

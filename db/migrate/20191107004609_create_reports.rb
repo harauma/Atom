@@ -12,10 +12,8 @@ class CreateReports < ActiveRecord::Migration[5.2]
       t.string     :aptitude_content, :limit => 7
       t.string     :interview,        :limit => 12
       t.string     :question,         :limit => 8
-      t.integer    :approval_flg
-      t.integer    :watch_flg
       t.text       :comment,          :limit => 1023
-      t.text       :reply,            :limit => 1023
+      t.integer    :delete_flg
       t.bigint     :student_id
       t.string     :course_id
       t.timestamps

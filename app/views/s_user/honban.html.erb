@@ -1,0 +1,93 @@
+<div class="ui three column grid">
+	<div class="column">
+		<h1>承認待ち申請書本提出一覧</h1>
+		<% if @appli.size > 0 %>
+    	<% @appli.zip(@student) do |appli,student| %>
+    		<h3 class="ui top attached header"><%= appli.company_name %></h3>
+        <div class="ui attached segment">
+          <p>学籍番号：<%= appli.student_id %></p>
+          <p>名前：<%= student.student_name %></p>
+          <p>開始日時：<%= appli.start.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p>終了日時：<%= appli.end.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p>場所：<%= appli.place %></p>
+          <p>内容：<%= appli.content %></p>
+          <p>休退分類：<%= appli.withdrawal %></p>
+          <% if appli.withdrawal == "欠席"%>
+            <p>欠席日：<%= appli.withdrawal_day.strftime('%Y年%m月%d日') %></p>
+          <% elsif appli.withdrawal == "早退"%>
+            <p>早退日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <% else %>
+            <p>遅刻日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <% end %>
+        <p>コメント<%= appli.comment %></p>
+        </div>
+    	<% end %>
+		<% else %>
+    	<h2 class="ui header">まだ申請書届いてないで！！</h2>
+		<% end %>
+	</div>
+	<div class="column">
+		<h1>やり直し申請書本提出一覧</h1>
+		<% if @prov_appli.size > 0 %>
+    	<% @prov_appli.zip(@prov_student) do |appli,student| %>
+    		<h3 class="ui top attached header"><%= appli.company_name %></h3>
+        <div class="ui attached segment">
+          <p>学籍番号：<%= appli.student_id %></p>
+          <p>名前：<%= student.student_name %></p>
+          <p>開始日時：<%= appli.start.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p>終了日時：<%= appli.end.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p>場所：<%= appli.place %></p>
+          <p>内容：<%= appli.content %></p>
+          <p>休退分類：<%= appli.withdrawal %></p>
+          <% if appli.withdrawal == "欠席"%>
+            <p>欠席日：<%= appli.withdrawal_day.strftime('%Y年%m月%d日') %></p>
+          <% elsif appli.withdrawal == "早退"%>
+            <p>早退日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <% else %>
+            <p>遅刻日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <% end %>
+          <p>返信内容：<%= appli.reply %></p>
+          <%=form_with url: '/s_user/appli/post', class: 'ui form' do |form| %>
+            <%= form.hidden_field :id, value: appli.id %>
+            <p>コメント</p>
+            <%= form.text_area :comment, value: appli.comment %>
+        </div>
+        <div class="ui attached segment">
+            <%= form.submit '提出', class: 'ui big blue basic button' %><br><br>
+          <% end %>
+            <%= button_to '削除', '/appli/delete', params: {id: appli.id},class: 'ui big red basic button' %><br>
+            <%= button_to '編集', "/appli/#{appli.appli_id}/edit", {method: :get, class: 'fluid ui big yellow  basic button'} %>
+        </div>
+    	<% end %>
+		<% else %>
+    	<h2 class="ui header">まだ申請書届いてないで！！</h2>
+		<% end %>
+	</div>
+    <div class="column">
+		<h1>承認済み申請書本提出一覧</h1>
+		<% if @prod_appli.size > 0 %>
+    	<% @prod_appli.zip(@prod_student) do |appli,student| %>
+    		<h3 class="ui top attached header"><%= appli.company_name %></h3>
+        <div class="ui attached segment">
+          <p>学籍番号：<%= appli.student_id %></p>
+          <p>名前：<%= student.student_name %></p>
+          <p>開始日時：<%= appli.start.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p>終了日時：<%= appli.end.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <p>場所：<%= appli.place %></p>
+          <p>内容：<%= appli.content %></p>
+          <p>休退分類：<%= appli.withdrawal %></p>
+          <% if appli.withdrawal == "欠席"%>
+            <p>欠席日：<%= appli.withdrawal_day.strftime('%Y年%m月%d日') %></p>
+          <% elsif appli.withdrawal == "早退"%>
+            <p>早退日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <% else %>
+            <p>遅刻日時：<%= appli.withdrawal_day.strftime('%Y年%m月%d日%H時%M分') %></p>
+          <% end %>
+          <p>コメント：<%= appli.comment %></p>
+        </div>
+    	<% end %>
+		<% else %>
+    	<h2 class="ui header">まだ申請書届いてないで！！</h2>
+		<% end %>
+	</div>
+</div>
